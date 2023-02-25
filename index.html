@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+body{margin:0;}
+
+.deptForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(247, 244, 244);
+  width: 400px;
+  height: 300px; /* or any desired height */
+}
+
+form input[type="submit"] {
+    display: block;
+    margin-top: 50px;
+    height: 30px;
+  }
+
+  form{
+    font-size: 20px;
+  }
+
+  ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: rgb(243, 218, 218);}
+
+ul.topnav li a.active {background-color: gray;}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+    td {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div>
+        <ul class="topnav">
+            <li><a href="teachers">Teachers</a></li>
+            <li><a href="department">Department</a></li>
+            <li><a href="index">Generate Time-Table</a></li>
+            <li class="right"><a href="#about">About</a></li>
+        </ul>
+    </div>
+    <center>
+        <h3>GENERATE TIME TABLE</h3>
+        <div class="deptForm">
+            
+            <form action="/submitCourse" method="post">
+                <label for="course">Choose the Department: </label>
+                <select name="course" id="course">
+                    <option value="MCA">MCA</option>
+                    <option value="BCA">BCA</option>
+                    <option value="BSC">BSc</option>
+                    <option value="XYZ">xyz</option>
+                </select>
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+    </center>
+</body>
+</html>

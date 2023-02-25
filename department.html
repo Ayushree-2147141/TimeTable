@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mydeptapp" ng-controller="deptctrldetails"  >
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+    <script src="/angularapp.js"></script>
+    <title>Time Table Generator</title>
+</head>
+<style>
+    body {margin: 0;}
+    ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: rgb(243, 218, 218);}
+
+ul.topnav li a.active {background-color: gray;}
+
+ul.topnav li.right {float: right;}
+
+/* table.center {
+  margin-left: auto; 
+  margin-right: auto;
+} */
+
+table {
+  margin: auto;
+  width: 60%;
+}
+
+.department-list{
+    margin-top:40px;
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+    td {
+        text-align: center;
+    }
+</style>
+<body>
+    <div>
+        <ul class="topnav">
+            <li><a href="teachers">Teachers</a></li>
+            <li><a href="department">Department</a></li>
+            <li><a href="index">Generate Time Table</a></li>
+            <li class="right"><a href="#about">About</a></li>
+        </ul>
+    </div>
+    <div>
+        <center>
+            <h2>Add Department</h2>
+            <form method="post" action="/addDepartment">
+                <p>Department Name:  <input type="text" name="deptName" placeholder="Department Name" /> </p>
+                <p>Abbr: <input type="text" name="deptAbbr" placeholder="Department Abbreviation" /> </p>
+                <input type="submit" value="Submit" />
+            </form>
+        </center>
+    </div>
+
+    <div class="department-list">
+        <center>
+            <h3>Department List</h3>
+            <table width="100%" class="center">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Department</th>
+                        <th>Department Name</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="dept in department">
+                        <td id="deptId" name="deptId">{{dept.deptId}}</td>
+                        <td id="deptAbbr" name="deptAbbr">{{dept.deptAbbr}}</td>
+                        <td id="deptName"  name="deptName">{{dept.deptName}}</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </div>
+</body>
+</html>

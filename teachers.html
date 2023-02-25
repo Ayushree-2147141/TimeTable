@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp" ng-controller="ctrldetails"  >
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+    <script src="/angularapp.js"></script>
+    <title>Time Table Generator</title>
+</head>
+<style>
+    body {margin: 0;}
+    ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: rgb(243, 218, 218);}
+
+ul.topnav li a.active {background-color: gray;}
+
+ul.topnav li.right {float: right;}
+
+/* table.center {
+  margin-left: auto; 
+  margin-right: auto;
+} */
+
+table {
+  margin: auto;
+  width: 60%;
+}
+
+.teacher-list{
+    margin-top:40px;
+}
+
+.course-list{
+    display : flex;
+    list-style-type: none;
+    margin: auto;
+    text-align: center;
+}
+
+.course-list li{
+    padding: 20px;
+    width : 200px;
+}
+
+.addTeacherForm{
+    width : 500px;
+    margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+    td {
+        text-align: center;
+    }
+</style>
+<body>
+    <div>
+        <ul class="topnav">
+            <li><a href="teachers">Teachers</a></li>
+            <li><a href="department">Department</a></li>
+            <li><a href="index">Generate Time Table</a></li>
+            <li class="right"><a href="#about">About</a></li>
+        </ul>
+    </div>
+    <div class="addTeacherForm">
+        <center>
+            <h2>Add Teachers</h2>
+            <form method="post" action="/addTeachers">
+                <p>First Name:  <input type="text" name="teacherFirstName" placeholder="First Name" /> </p>
+                <p>Last Name: <input type="text" name="teacherLastName" placeholder="Last Name" /></p>
+
+                <p>Choose Department:
+                    <select name="teacherDeptId" id="teacherDeptId">
+                        <option value="MCA">MCA</option>
+                        <option value="BCA">BCA</option>
+                        <option value="BSC">BSC</option>
+                    </select>
+                </p>
+                <p>Address:<br> <textarea name="teacherAddress" cols="40" placeholder="Address"> </textarea></p>
+                <p>Teacher Short Name : <input type="text" name="teacherShortName" placeholder="Initials"/> </p>
+                <input type="submit" value="Submit" />
+            </form>
+        </center>
+    </div>
+
+    <div class="teacher-list">
+        <center>
+            <h3>Teachers List</h3>
+            <table width="100%" class="center">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Department ID</th>
+                        <th>Address</th>
+                        <th>Short Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="teacher in teachers">
+                        <td id="teacherID" name="teacherID">{{teacher.teacherID}}</td>
+                        <td id="teacherFirstName" name="teacherFirstName">{{teacher.teacherFirstName}}</td>
+                        <td id="teacherLastName"  name="teacherLastName">{{teacher.teacherLastName}}</td>
+                        <td id="teacherDeptId" name="teacherDeptId">{{teacher.teacherDeptId}}</td>
+                        <td id="teacherAddress" name="teacherAddress">{{teacher.teacherAddress}}</td>
+                        <td id="teacherShortName" name="teacherShortName">{{teacher.teacherShortName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </div>
+</body>
+</html>
